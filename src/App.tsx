@@ -14,7 +14,7 @@ const App = () => {
       alert('Preencha todos os campos')
     }
   }
-  
+
   return ( 
     <div className={style.main}>
       <header>
@@ -30,13 +30,13 @@ const App = () => {
           <input 
               type="number"
               className={style.inputHeight} 
-              placeholder="Digite a sua altura"
+              placeholder="Digite a sua altura. Ex: 1.5 (em métros)"
               value={heightField > 0 ? heightField : ''}
           />
           <input 
             type="number" 
             className={style.inputWeight} 
-            placeholder="Digite o seu peso"
+            placeholder="Digite o seu peso. Ex: 75.3 (em kg)"
             value={weightField > 0 ? weightField : ''}
           />
           <button onClick={eventButtonCalculator}>Calcular</button>
