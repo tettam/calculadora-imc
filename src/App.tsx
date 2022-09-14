@@ -1,6 +1,8 @@
 import style from './App.module.css'
 import powerImage from './assets/powered.png'
 import { useState } from 'react'
+import { levels , calculateImc} from './helpers/imc'
+import { GridItem } from './components/GridItem'
 
 const App = () => {
   const  [ heightField , setHeightField ] = useState<number>(0)
@@ -32,36 +34,26 @@ const App = () => {
               className={style.inputHeight} 
               placeholder="Digite a sua altura. Ex: 1.5 (em métros)"
               value={heightField > 0 ? heightField : ''}
+              onChange = {e => setWeightField(parseFloat(e.target.value))}
           />
           <input 
             type="number" 
             className={style.inputWeight} 
             placeholder="Digite o seu peso. Ex: 75.3 (em kg)"
             value={weightField > 0 ? weightField : ''}
+            onChange = {e => setWeightField(parseFloat(e.target.value))}
           />
           <button onClick={eventButtonCalculator}>Calcular</button>
         </div>
 
         <div className={style.sectionRight}>
-            <div className="weightThin">
-            <div className="img">img</div>
-            <div className="weightTtle">Magreza</div>
-            <div className="imcInfo">IMC está entre {} e {}</div>
-          </div>
-          <div className="weighNormal">
-            <div className="img">img</div>
-            <div className="weightTitle">Normal</div>
-            <div className="imcInfo">IMC está entre {} e {}</div>
-          </div>
-          <div className="weighOverweight">
-            <div className="img">img</div>
-            <div className="weightTitle">Sobrepeso</div>
-            <div className="imcInfo">IMC está entre {} e {}</div>
-          </div>
-          <div className="weighObesity">
-            <div className="img">img</div>
-            <div className="weightTitle">Obesidade</div>
-            <div className="imcInfo">IMC está entre {} e {}</div>
+          <div className={style.grid}>
+          {levels.map((item,key) => (
+            <GridItem key={key} item={item}/>
+
+            
+          ))}
+            
           </div>
         </div>
       </section>
