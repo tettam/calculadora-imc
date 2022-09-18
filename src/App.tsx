@@ -1,17 +1,18 @@
 import style from './App.module.css'
 import powerImage from './assets/powered.png'
 import { useState } from 'react'
-import { levels , calculateImc} from './helpers/imc'
+import { levels , calculateImc, Level} from './helpers/imc'
 import { GridItem } from './components/GridItem'
 
 const App = () => {
-  const  [ heightField , setHeightField ] = useState<number>(0)
-  const [ weightField , setWeightField ] = useState<number>(0)
+  const  [heightField , setHeightField] = useState<number>(0)
+  const [weightField , setWeightField] = useState<number>(0)
+  const [toShow , setToShow] = useState<Level | null>(null)
 
 
   const eventButtonCalculator = () => {
-    if(heightField && weightField) {
-
+    if(heightField && weightField) {/* Abrir grid relacionado ao IMC */
+      setToShow(calculateImc(heightField, weightField))
     } else {
       alert('Preencha todos os campos')
     }
@@ -34,7 +35,7 @@ const App = () => {
               className={style.inputHeight} 
               placeholder="Digite a sua altura. Ex: 1.5 (em métros)"
               value={heightField > 0 ? heightField : ''}
-              onChange = {e => setWeightField(parseFloat(e.target.value))}
+              onChange = {e => setHeightField(parseFloat(e.target.value))}
           />
           <input 
             type="number" 
@@ -47,14 +48,19 @@ const App = () => {
         </div>
 
         <div className={style.sectionRight}>
-          <div className={style.grid}>
-          {levels.map((item,key) => (
-            <GridItem key={key} item={item}/>
-
-            
-          ))}
-            
-          </div>
+          {!toShow && /* Condição para abrir o GRID IMC */
+            <div className={style.grid}>
+              {levels.map((item,key) => (
+                <GridItem key={key} item={item}/>
+              ))}
+            </div>
+          }
+          {toShow && 
+            <div className={style.rightBig}>
+              <div className={style.rightArrow}></div>
+              <GridItem item={toShow}/>
+            </div>
+          }
         </div>
       </section>
 
