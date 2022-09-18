@@ -1,6 +1,7 @@
 # Calculadora de IMC
 
-Projeto desenvolvido durando o curso [B7Web](https://b7web.com.br) . Foi utilizado React e Typescript. Além disso, para estilizar usamos o CSS Module.
+Projeto desenvolvido durando o curso [B7Web](https://b7web.com.br) . Foi utilizado React e Typescript. 
+O projeto foi iniciado em VITE e para estilizar usei CSS Modules.
 
 
 
