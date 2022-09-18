@@ -3,6 +3,7 @@ import powerImage from './assets/powered.png'
 import { useState } from 'react'
 import { levels , calculateImc, Level} from './helpers/imc'
 import { GridItem } from './components/GridItem'
+import  leftArrowImage  from './assets/leftarrow.png'
 
 const App = () => {
   const  [heightField , setHeightField] = useState<number>(0)
@@ -16,6 +17,12 @@ const App = () => {
     } else {
       alert('Preencha todos os campos')
     }
+  }
+
+  const handleBackButton = () => {
+    setToShow(null)
+    setHeightField(0)
+    setWeightField(0)
   }
 
   return ( 
@@ -36,6 +43,7 @@ const App = () => {
               placeholder="Digite a sua altura. Ex: 1.5 (em métros)"
               value={heightField > 0 ? heightField : ''}
               onChange = {e => setHeightField(parseFloat(e.target.value))}
+              disabled={toShow ? true : false}
           />
           <input 
             type="number" 
@@ -43,8 +51,9 @@ const App = () => {
             placeholder="Digite o seu peso. Ex: 75.3 (em kg)"
             value={weightField > 0 ? weightField : ''}
             onChange = {e => setWeightField(parseFloat(e.target.value))}
+            disabled={toShow ? true : false}
           />
-          <button onClick={eventButtonCalculator}>Calcular</button>
+          <button onClick={eventButtonCalculator} disabled={toShow ? true : false}>Calcular</button>
         </div>
 
         <div className={style.sectionRight}>
@@ -57,7 +66,9 @@ const App = () => {
           }
           {toShow && 
             <div className={style.rightBig}>
-              <div className={style.rightArrow}></div>
+              <div className={style.rightArrow} onClick={handleBackButton}>
+                <img src={leftArrowImage} alt="" width={25}/>
+              </div>
               <GridItem item={toShow}/>
             </div>
           }

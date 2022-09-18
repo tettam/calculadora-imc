@@ -1,6 +1,11 @@
-Tecnologias utilizadas
+# Calculadora de IMC
 
-ReactJS
-Typescript
+Projeto desenvolvido durando o curso [B7Web](https://b7web.com.br) . Foi utilizado React e Typescript. Além disso, para estilizar usamos o CSS Module.
 
-Para estilização foi usado CSS Modules
+
+
+### Instalação
+- `npm install`
+
+### Para rodar
+- `npm run dev`
