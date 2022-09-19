@@ -22,7 +22,7 @@ export const GridItem = ({item}:Props) => {
 
       <div className={styles.gridInfo}>
         <>
-          IMG está entre <strong>{item.imc[0]}</strong> e <strong>{item.imc[1]}</strong>
+          IMC está entre <strong>{item.imc[0]}</strong> e <strong>{item.imc[1]}</strong>
         </>
       </div>
     </div>
