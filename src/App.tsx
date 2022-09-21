@@ -40,7 +40,7 @@ const App = () => {
           <input 
               type="number"
               className={style.inputHeight} 
-              placeholder="Digite a sua altura. Ex: 1.5 (em métros)"
+              placeholder="Digite a sua altura. Ex: 1.5 (em metros)"
               value={heightField > 0 ? heightField : ''}
               onChange = {e => setHeightField(parseFloat(e.target.value))}
               disabled={toShow ? true : false}
